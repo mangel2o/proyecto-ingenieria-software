@@ -14,3 +14,19 @@ C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.dll
 C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\ref\seeker.dll
 C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.pdb
 C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.exe
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.deps.json
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.runtimeconfig.json
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.runtimeconfig.dev.json
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.dll
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\ref\seeker.dll
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.pdb
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.csprojAssemblyReference.cache
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.AssemblyInfoInputs.cache
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.AssemblyInfo.cs
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.csproj.CoreCompileInputs.cache
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.dll
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\ref\seeker.dll
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.pdb
+D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache
