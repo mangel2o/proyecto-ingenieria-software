@@ -1,0 +1,16 @@
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.exe
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.deps.json
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.runtimeconfig.json
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.runtimeconfig.dev.json
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.dll
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\ref\seeker.dll
+C:\Users\Miguel Castro\Desktop\seeker\bin\Debug\net5.0\seeker.pdb
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.csprojAssemblyReference.cache
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.AssemblyInfoInputs.cache
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.AssemblyInfo.cs
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.csproj.CoreCompileInputs.cache
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.dll
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\ref\seeker.dll
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.pdb
+C:\Users\Miguel Castro\Desktop\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache
