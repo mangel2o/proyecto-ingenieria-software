@@ -30,3 +30,19 @@ D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Pro
 D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\ref\seeker.dll
 D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.pdb
 D:\Documents\Downloads\BackupEscuela\Backup\Escuela\Universidad\8to Semestre\Proyecto Ingenieria\Repositorio\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.exe
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.deps.json
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.runtimeconfig.json
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.runtimeconfig.dev.json
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.dll
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\ref\seeker.dll
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\seeker.pdb
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.csprojAssemblyReference.cache
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.AssemblyInfoInputs.cache
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.AssemblyInfo.cs
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.csproj.CoreCompileInputs.cache
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.dll
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\ref\seeker.dll
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.pdb
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache

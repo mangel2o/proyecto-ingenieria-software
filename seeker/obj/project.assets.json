@@ -8,26 +8,24 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\pedro\\.nuget\\packages\\": {}
+    "C:\\Users\\Miguel Castro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Downloads\\BackupEscuela\\Backup\\Escuela\\Universidad\\8to Semestre\\Proyecto Ingenieria\\Repositorio\\proyecto-ingenieria-software\\seeker\\seeker.csproj",
+      "projectUniqueName": "c:\\Users\\Miguel Castro\\Documents\\GitHub\\proyecto-ingenieria-software\\seeker\\seeker.csproj",
       "projectName": "seeker",
-      "projectPath": "D:\\Documents\\Downloads\\BackupEscuela\\Backup\\Escuela\\Universidad\\8to Semestre\\Proyecto Ingenieria\\Repositorio\\proyecto-ingenieria-software\\seeker\\seeker.csproj",
-      "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Downloads\\BackupEscuela\\Backup\\Escuela\\Universidad\\8to Semestre\\Proyecto Ingenieria\\Repositorio\\proyecto-ingenieria-software\\seeker\\obj\\",
+      "projectPath": "c:\\Users\\Miguel Castro\\Documents\\GitHub\\proyecto-ingenieria-software\\seeker\\seeker.csproj",
+      "packagesPath": "C:\\Users\\Miguel Castro\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Miguel Castro\\Documents\\GitHub\\proyecto-ingenieria-software\\seeker\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Miguel Castro\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -60,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -4,25 +4,12 @@ using System.Diagnostics;
 using System.Text;
 
 namespace seeker{
-   class Program{
-      static void Main(string[] args){
-         //CREA UN PATH HACIA EL DESKTOP
-         string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-         //CREA UN ARCHIVO DE SALIDA
-         createFile(path + "\\seeker\\Result.txt");
+   public class ActOne{
+      public void executeProgram(string path){
+         string[] filePaths = Directory.GetFiles(path + "\\files");
+         createFile(path + "\\results\\act1\\results.txt");
 
-         //ABRE LOS DOCUMENTOS DEL PATH SELECCIONADO
-         openFiles(path);
-         Console.Read();
-      }
-
-      //ABRE LOS ARCHIVOS DEL PATH
-      public static void openFiles(string path){
-         //GUARDA EL PATH DE LOS ARCHIVOS EN UN ARRAY
-         string[] filePaths = Directory.GetFiles(path + "\\seeker\\files");
-
-         //INICIA UN CRONOMETRO
          Stopwatch watch = Stopwatch.StartNew();
 
          //ABRE UNO POR UNO LOS ARCHIVOS DEL DIRECTORIO
@@ -32,40 +19,51 @@ namespace seeker{
          
          watch.Stop();
          string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
-         addText(path, value);
-         Console.WriteLine(value);
+         writeOnFile(path, value);
+         //Console.WriteLine(value);
+         Console.Read();
       }
 
-      public static void openFile(string originPath, string filePath){
+      public void openFile(string path, string filePath){
          Stopwatch watch = Stopwatch.StartNew();
+
          FileStream fs = File.OpenRead(filePath);
-         remove_html_tags(fs);
          fs.Close();
+
          watch.Stop();
          string value = new DirectoryInfo(filePath).Name + " -/- " + watch.Elapsed;
-         addText(originPath, value);
-         Console.WriteLine(value);
+         writeOnFile(path, value);
+         //Console.WriteLine(value);
       }
 
-      public static void createFile(string filePath){
-         if (File.Exists(filePath)){
-            File.Delete(filePath);
-         }
-         FileStream fs = File.Create(filePath);
+      public void writeOnFile(string path, string value){
+         FileStream fs = new FileStream(path + "\\results\\act1\\results.txt", FileMode.Append);
+         byte[] bdata = Encoding.Default.GetBytes(value + "\n");
+         fs.Write(bdata, 0, bdata.Length);
          fs.Close();
       }
 
+      public static void createFile(string path){
+         if (File.Exists(path)){
+            File.Delete(path);
+         }
+         FileStream fs = File.Create(path);
+         fs.Close();
+      }
+   }
 
-      public static void addText(string filePath, string value)  
-      {  
-        // Archivo para act 1
-        //FileStream fs = new FileStream(filePath  + "\\seeker\\Result.txt", FileMode.Append);
-        // Archivo para act 2
-        FileStream fs = new FileStream(filePath  + "\\seeker\\Result_a2.txt", FileMode.Append);
-        byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-        fs.Write(bdata, 0, bdata.Length);
-        fs.Close();
-      }  
+
+   class Program{
+      static void Main(string[] args){
+
+         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+         path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
+         
+         ActOne act1 = new ActOne();
+         act1.executeProgram(path);
+         
+
+      }
 
      public static void remove_html_tags(FileStream fs)
      {
