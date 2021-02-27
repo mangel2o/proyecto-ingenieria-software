@@ -62,25 +62,63 @@ namespace seeker{
    }
 
    public class ActTwo{
-      public void executeProgram(){
+      public void executeProgram(string path){
+         string[] filePaths = Directory.GetFiles(path + "\\files");
+         createFile(path + "\\results\\act2\\results.txt");
 
+         Stopwatch watch = Stopwatch.StartNew();
+
+         foreach(string filePath in filePaths){
+            openFile(path, filePath);
+         }
+         watch.Stop();
+         string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
+         writeOnFile(path, value);
+         //Console.WriteLine(value);
+
+         Console.WriteLine("\nOperacion completada exitosamente, Noice");
+         Console.Read();
+      }
+
+      public void openFile(string path, string filePath){
+         string changeText = "";
+         Stopwatch watch = Stopwatch.StartNew();
+
+         using(FileStream fs = File.OpenRead(filePath)) { 
+            byte[] b = new byte[1024]; 
+            UTF8Encoding temp = new UTF8Encoding(true); 
+  
+            while (fs.Read(b, 0, b.Length) > 0) { 
+               changeText += temp.GetString(b);
+            } 
+            changeText = System.Text.RegularExpressions.Regex.Replace(changeText ,@"<(.|\n)+?>", string.Empty);
+            Directory.CreateDirectory(path + "\\results\\act2\\files");
+            File.WriteAllText(path + "\\results\\act2\\files\\" + new DirectoryInfo(filePath).Name, changeText);
+         } 
+         watch.Stop();
+         string value = new DirectoryInfo(filePath).Name + " -/- " + watch.Elapsed;
+         //Console.WriteLine(value);
+         writeOnFile(path, value);
+      }
+
+      public void writeOnFile(string path, string value){
+         FileStream fs = new FileStream(path + "\\results\\act2\\results.txt", FileMode.Append);
+         byte[] bdata = Encoding.Default.GetBytes(value + "\n");
+         fs.Write(bdata, 0, bdata.Length);
+         fs.Close();
+      }
+
+      public static void createFile(string path){
+         if (File.Exists(path)){
+            File.Delete(path);
+         }
+         FileStream fs = File.Create(path);
+         fs.Close();
       }
 
 
       
-     public static void remove_html_tags(FileStream fs)
-     {
-        string text = "";
-        byte[] buf = new byte[1024];
-        int c;
-
-         while ((c = fs.Read(buf, 0, buf.Length)) > 0)
-         {
-         text = text + (Encoding.UTF8.GetString(buf, 0, c));
-         }
-        text = System.Text.RegularExpressions.Regex.Replace(text ,@"<(.|\n)+?>", string.Empty);
-        text = "";
-     }
+     
    }
 
    class Program{
@@ -88,19 +126,22 @@ namespace seeker{
 
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
          path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
-  
+
+         /*
          ActOne act1 = new ActOne();
          act1.executeProgram(path);
+         */
 
-         copyFilesFromTo(path + "\\files", path + "\\results\\act2\\files");         
          ActTwo act2 = new ActTwo();
-         act2.executeProgram();
+         act2.executeProgram(path);
 
-         copyFilesFromTo(path + "\\results\\act2\\files", path + "\\results\\act3\\files"); 
+         /*
          ActThree act3 = new ActThree();
          act3.executeProgram();
+         */
       }
 
+      /*
       public static void copyFilesFromTo(string sourcePath, string targetPath){
          string fileName;
          string destFile;
@@ -115,6 +156,6 @@ namespace seeker{
                 File.Copy(file, destFile, true);
             }
       }
-
+      */
    }
 }
