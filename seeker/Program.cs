@@ -21,19 +21,27 @@ namespace seeker{
          string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
          writeOnFile(path, value);
          //Console.WriteLine(value);
+
+         Console.WriteLine("\nOperacion completada exitosamente, Noice");
          Console.Read();
       }
 
       public void openFile(string path, string filePath){
          Stopwatch watch = Stopwatch.StartNew();
 
-         FileStream fs = File.OpenRead(filePath);
-         fs.Close();
+         using(FileStream fs = File.OpenRead(filePath)) { 
+            byte[] b = new byte[1024]; 
+            //UTF8Encoding temp = new UTF8Encoding(true); 
+  
+            while (fs.Read(b, 0, b.Length) > 0) { 
+                // Printing the file contents 
+                //Console.WriteLine(temp.GetString(b)); 
+            } 
+         } 
 
          watch.Stop();
          string value = new DirectoryInfo(filePath).Name + " -/- " + watch.Elapsed;
          writeOnFile(path, value);
-         //Console.WriteLine(value);
       }
 
       public void writeOnFile(string path, string value){
