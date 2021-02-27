@@ -96,7 +96,7 @@ namespace seeker{
          ActTwo act2 = new ActTwo();
          act2.executeProgram();
 
-         copyFilesFromTo(path + "\\results\\act2\\files"), path + "\\results\\act3\\files"); 
+         copyFilesFromTo(path + "\\results\\act2\\files", path + "\\results\\act3\\files"); 
          ActThree act3 = new ActThree();
          act3.executeProgram();
       }
