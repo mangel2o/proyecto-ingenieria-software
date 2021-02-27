@@ -41,6 +41,7 @@ namespace seeker{
 
          watch.Stop();
          string value = new DirectoryInfo(filePath).Name + " -/- " + watch.Elapsed;
+         //Console.WriteLine(value);
          writeOnFile(path, value);
       }
 
@@ -60,19 +61,13 @@ namespace seeker{
       }
    }
 
-
-   class Program{
-      static void Main(string[] args){
-
-         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-         path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
-         
-         ActOne act1 = new ActOne();
-         act1.executeProgram(path);
-         
+   public class ActTwo{
+      public void executeProgram(){
 
       }
 
+
+      
      public static void remove_html_tags(FileStream fs)
      {
         string text = "";
@@ -86,6 +81,40 @@ namespace seeker{
         text = System.Text.RegularExpressions.Regex.Replace(text ,@"<(.|\n)+?>", string.Empty);
         text = "";
      }
+   }
+
+   class Program{
+      static void Main(string[] args){
+
+         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+         path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
+  
+         ActOne act1 = new ActOne();
+         act1.executeProgram(path);
+
+         copyFilesFromTo(path + "\\files", path + "\\results\\act2\\files");         
+         ActTwo act2 = new ActTwo();
+         act2.executeProgram();
+
+         copyFilesFromTo(path + "\\results\\act2\\files"), path + "\\results\\act3\\files"); 
+         ActThree act3 = new ActThree();
+         act3.executeProgram();
+      }
+
+      public static void copyFilesFromTo(string sourcePath, string targetPath){
+         string fileName;
+         string destFile;
+
+         Directory.CreateDirectory(targetPath);
+
+         string[] files = Directory.GetFiles(sourcePath);
+            foreach (string file in files)
+            {
+                fileName = Path.GetFileName(file);
+                destFile = Path.Combine(targetPath, fileName);
+                File.Copy(file, destFile, true);
+            }
+      }
 
    }
 }
