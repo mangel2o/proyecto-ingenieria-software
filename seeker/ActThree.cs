@@ -16,6 +16,7 @@ using System.Linq;
          string[] filePaths = Directory.GetFiles(path + "\\results\\act2\\files");
 
          //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
+         Directory.CreateDirectory(path + "\\results\\act3");
          createFile(path + "\\results\\act3\\results.txt");
 
          //CREA UN DIRECTORIO PARA LOS NUEVOS ARCHIVOS HTML

@@ -16,8 +16,8 @@ public class ActFour{
          string[] filePaths = Directory.GetFiles(path + "\\results\\act2\\files");
 
          //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
+         Directory.CreateDirectory(path + "\\results\\act4");
          createFile(path + "\\results\\act4\\resultsLog.txt");
-
          createFile(path + "\\results\\act4\\resultsWords.txt");
 
          //CREA UN DIRECTORIO PARA LOS NUEVOS ARCHIVOS HTML

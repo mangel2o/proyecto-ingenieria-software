@@ -14,6 +14,7 @@ using System.Linq;
          string[] filePaths = Directory.GetFiles(path + "\\files");
          
          //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
+         Directory.CreateDirectory(path + "\\results\\act1");
          createFile(path + "\\results\\act1\\results.txt");
 
          //EMPIEZA EL CRONOMETRO
