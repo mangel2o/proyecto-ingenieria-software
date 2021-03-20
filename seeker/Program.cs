@@ -4,7 +4,7 @@ namespace seeker{
    class Program{
       static void Main(string[] args){
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-          path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
+         path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
 
          /*
          ActOne act1 = new ActOne();
