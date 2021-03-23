@@ -8,8 +8,6 @@ using System.Linq;
 public class ActFour{
       //EJECUTA EL PROGRAMA
       public void executeProgram(string path){
-
-         
          Console.WriteLine("Operacion iniciada");
 
          //OBTIENE LAS RUTAS DE LOS ARCHIVOS HTML
@@ -45,11 +43,7 @@ public class ActFour{
          //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
          string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
          writeOnFile(path, value);
-         /*
-         double tiempoTotal = watch.Elapsed.TotalSeconds;
-         //NUEVO STOPWATCH PARA MEDIR TIEMPO DE ESCRITURA DE PALABRAS
-         watch = Stopwatch.StartNew();
-         */
+
          //CONVIERTE EL ARRAYLIST EN UN ARRAY DE STRINGS
          string[] finalWords = words.ToArray(typeof(string)) as string[];
 
@@ -58,16 +52,6 @@ public class ActFour{
 
          //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
          File.WriteAllLines(path + "\\results\\act4\\consolidatedFile.html", finalWords);
-         
-         /*
-         watch.Stop();
-         tiempoTotal = tiempoTotal + watch.Elapsed.TotalSeconds;
-         //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-         value = "\nTiempo total en escribir las palabras: " + watch.Elapsed;
-         writeOnFile(path, value);
-         value = "\nTiempo total: " + tiempoTotal;
-         writeOnFile(path, value);
-         */
          Console.WriteLine("\nOperación actividad 4");
       }
 
@@ -137,5 +121,5 @@ public class ActFour{
          FileStream fs = File.Create(path);
          fs.Close();
       }
-   }
+}
 
