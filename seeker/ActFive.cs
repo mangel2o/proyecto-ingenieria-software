@@ -5,10 +5,12 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Data;
 using System.Linq;
-public class ActFive
-   {
+
+
+public class ActFive{
       int pos = 1;
       string[,] words2 = new string[5000,2];
+
       //EJECUTA EL PROGRAMA
       public void executeProgram(string path){
 
@@ -17,13 +19,12 @@ public class ActFive
          //OBTIENE LAS RUTAS DE LOS ARCHIVOS HTML
          string[] filePaths = Directory.GetFiles(path + "\\act5");
 
-         //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
-         createFile(path + "\\results\\act5\\resultsLog.txt");
-
-         createFile(path + "\\results\\act5\\resultsWords.txt");
-
          //CREA UN DIRECTORIO PARA LOS NUEVOS ARCHIVOS HTML
          Directory.CreateDirectory(path + "\\results\\act5\\files");
+
+         //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
+         createFile(path + "\\results\\act5\\resultsLog.txt");
+         createFile(path + "\\results\\act5\\resultsWords.txt");
 
          //INICIA EL CRONOMETRO
          Stopwatch watch = Stopwatch.StartNew();
@@ -32,25 +33,16 @@ public class ActFive
          foreach(string filePath in filePaths){
             openFile(path, filePath);
          }
+
          //TERMINA EL CRONOMETRO
          watch.Stop();
-         double tiempoTotal = watch.Elapsed.TotalSeconds;
+
          //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
          string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
          writeOnFileLog(path, value);
-         //NUEVO STOPWATCH PARA MEDIR TIEMPO DE ESCRITURA DE PALABRAS
-         watch = Stopwatch.StartNew();
 
          //ESCRIBIR LAS PALABRAS
          writeOnFileWords(path);
-         
-         watch.Stop();
-         tiempoTotal = tiempoTotal + watch.Elapsed.TotalSeconds;
-         //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-         value = "\nTiempo total en escribir las palabras: " + watch.Elapsed;
-         writeOnFileLog(path, value);
-         value = "\nTiempo total: " + tiempoTotal;
-         writeOnFileLog(path, value);
 
          Console.WriteLine("\nOperacion completada exitosamente, Noice");
       }
@@ -98,9 +90,6 @@ public class ActFive
 
             //ORDENA EL ARRAY
             Array.Sort(words);
-
-            //ESCRIBE EL ARRAY ORDENADO EN UN NUEVO ARCHIVO HTML
-            File.WriteAllLines(path + "\\results\\act3\\files\\" + new DirectoryInfo(filePath).Name, words);
 
             int tempVal = 0;
             //ESCRIBE TODAS LAS PALABRAS A UN ARRAY LIST
