@@ -1,2 +1,1 @@
-
-Tiempo total en abrir los archivos: 00:00:26.0559932
+Tiempo total en ejecutar el programa: 00:00:00.6538172

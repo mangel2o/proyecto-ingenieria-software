@@ -46,3 +46,5 @@ c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\
 c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\ref\seeker.dll
 c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.pdb
 c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.genruntimeconfig.cache
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\bin\Debug\net5.0\ConsoleTables.dll
+c:\Users\Miguel Castro\Documents\GitHub\proyecto-ingenieria-software\seeker\obj\Debug\net5.0\seeker.csproj.CopyComplete

@@ -5,121 +5,84 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Linq;
+using ConsoleTables;
+
 public class ActFour{
-      //EJECUTA EL PROGRAMA
-      public void executeProgram(string path){
-         Console.WriteLine("Operacion iniciada");
+   //EJECUTA EL PROGRAMA
+   public void executeProgram(string path){
+      //INICIA EL CRONOMETRO
+      Stopwatch watch = Stopwatch.StartNew();
+      Console.WriteLine("Actividad 4 en proceso... ");
 
-         //OBTIENE LAS RUTAS DE LOS ARCHIVOS HTML
-         string[] filePaths = Directory.GetFiles(path + "\\results\\act3\\files");
+      //TABLA PARA GUARDAR LOS DATOS DE MANERA ORDENADA
+      var table = new ConsoleTable("Archivo", "Tiempo");
 
-         //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
-         Directory.CreateDirectory(path + "\\results\\act4");
-         createFile(path + "\\results\\act4\\results.txt");
+      //OBTIENE LAS RUTAS DE LOS ARCHIVOS HTML
+      string[] filePaths = Directory.GetFiles(path + "\\results\\act3\\files");
 
-         //CREA UN ARRAYLIST PARA GUARDAR LAS PALABRAS
-         ArrayList words = new ArrayList();
+      //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
+      Directory.CreateDirectory(path + "\\results\\act4");
+      createFile(path + "\\results\\act4\\results.txt");
 
-         //INICIA EL CRONOMETRO
-         Stopwatch watch = Stopwatch.StartNew();
-         
+      //CREA UN ARRAYLIST PARA GUARDAR LAS PALABRAS
+      ArrayList words = new ArrayList();
 
+      using (var progress = new ProgressBar()) {
+         progress.setTask("Consolidando palabras");
+         int count = 0;
          //NAVEGA POR CADA ARCHIVO HTML DEL DIRECTORIO
          foreach(string filePath in filePaths){
-
+            Stopwatch auxWatch = Stopwatch.StartNew();
+            count++;
             //GUARDA LAS PALABRAS DE CADA ARCHIVO EN UN ARRAY AUXILIAR
-            string[] documentWords = openFile(path, filePath);
+            string[] documentWords = File.ReadAllLines(filePath);
 
             //ESCRIBE CADA PALABRA EN UN ARRAYLIST
             foreach(string word in documentWords){
                //AGREGA CADA PALABRA AL ARRAYLIST
                words.Add(word);
             }
+            auxWatch.Stop();
+            table.AddRow(new DirectoryInfo(filePath).Name , auxWatch.Elapsed);
+            progress.Report((double) count / filePaths.Length);
          }
-         
-         //TERMINA EL CRONOMETRO
-         watch.Stop();
-
-         //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-         string value = "\nTiempo total en abrir los archivos: " + watch.Elapsed;
-         writeOnFile(path, value);
-
-         //CONVIERTE EL ARRAYLIST EN UN ARRAY DE STRINGS
-         string[] finalWords = words.ToArray(typeof(string)) as string[];
-
-         //ORDENA LAS PALABRAS
-         Array.Sort(finalWords);
-
-         //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
-         File.WriteAllLines(path + "\\results\\act4\\consolidatedFile.html", finalWords);
-         Console.WriteLine("\nOperación actividad 4");
+         Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
+         Console.WriteLine("\n[##########]  100%  | Consolidando palabras");
       }
 
+      //CONVIERTE EL ARRAYLIST EN UN ARRAY DE STRINGS
+      string[] finalWords = words.ToArray(typeof(string)) as string[];
 
-      //ABRE EL ARCHIVO HTMWL
-      public string[] openFile(string path, string filePath){
-         //VARIABLES CHIDAS
-         string text = "";
-         string[] words;
-         
-         //CARACTERES ESPECIALES, PON AQUI UN CARACTER SEPARADOR DE TEXTO
-         char[] specialChars = new char[] {
-            ' ', ',', '.', '/', '&',
-            '\n', '\r'
-         };
+      //ORDENA LAS PALABRAS
+      Array.Sort(finalWords);
 
-         //EMPIEZA EL CRONOMETRO
-         Stopwatch watch = Stopwatch.StartNew();
+      //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
+      File.WriteAllLines(path + "\\results\\act4\\consolidatedFile.html", finalWords);
 
-         //ABRE EL DOCUMENTO HTML
-         using(FileStream fs = File.OpenRead(filePath)) { 
-            byte[] b = new byte[1024]; 
-            UTF8Encoding temp = new UTF8Encoding(true); 
+      //TERMINA EL CRONOMETRO
+      watch.Stop();
 
-            //LEE EL ARCHIVO HTML Y LO GUARDA EN UN STRING
-            while (fs.Read(b, 0, b.Length) > 0) { 
-               text += temp.GetString(b);
-            }
-            
-            //DIVIDE EL TEXTO EN UN ARRAY DE PALABRAS
-            words = text.Split(specialChars).ToArray();
-            
-            //BORRA LOS CARACTERES ESPECIALES DEL TEXTO
-            for(int i = 0; i < words.Length; i++){
-               //BORRA LOS ESPACIOS EXISTENTES EN EL TEXTO
-               words[i] = Regex.Replace(words[i],  @"\s+", string.Empty);
+      //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
+      writeOnFile(path, table.ToMinimalString());
+      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      Console.WriteLine("Actividad 4 completada exitosamente, Noice\n");         
+   }
 
-               //BORRA TODOS LOS CARACTERES NO ALFABETICOS
-               words[i] = Regex.Replace(words[i], "[^a-zA-Z0-9]", string.Empty);
-            }
-            
-            //BORRA TODOS LOS ESPACIOS RESIDUALES
-            words = words.Where(word => !string.IsNullOrWhiteSpace(word)).ToArray();
-         } 
+   //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT, MANEJA LOS TIEMPOS
+   public void writeOnFile(string path, string value){
+      FileStream fs = new FileStream(path + "\\results\\act4\\results.txt", FileMode.Append);
+      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
+      fs.Write(bdata, 0, bdata.Length);
+      fs.Close();
+   }
 
-         //TERMINA EL CRONOMETRO
-         watch.Stop();
-
-         //GUARDA EL TIEMPO Y LO ESCRIBE EN UN TXT
-         string value = new DirectoryInfo(filePath).Name + " -/- " + watch.Elapsed;
-         writeOnFile(path, value);
-         return words;
+   //CREA UN NUEVO ARCHIVO TXT
+   public static void createFile(string path){
+      if (File.Exists(path)){
+         File.Delete(path);
       }
-      //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT, MANEJA LOS TIEMPOS
-      public void writeOnFile(string path, string value){
-         FileStream fs = new FileStream(path + "\\results\\act4\\results.txt", FileMode.Append);
-         byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-         fs.Write(bdata, 0, bdata.Length);
-         fs.Close();
-      }
-
-      //CREA UN NUEVO ARCHIVO TXT
-      public static void createFile(string path){
-         if (File.Exists(path)){
-            File.Delete(path);
-         }
-         FileStream fs = File.Create(path);
-         fs.Close();
-      }
+      FileStream fs = File.Create(path);
+      fs.Close();
+   }
 }
 
