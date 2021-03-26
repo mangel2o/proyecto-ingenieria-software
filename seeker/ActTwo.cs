@@ -43,7 +43,7 @@ public class ActTwo{
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
       File.WriteAllText(path + "\\results\\act2\\results.txt", table.ToMinimalString());
-      File.WriteAllText(path + "\\results\\act2\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.AppendAllText(path + "\\results\\act2\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 2 completada exitosamente, Noice\n");         
    }
 

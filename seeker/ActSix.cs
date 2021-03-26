@@ -99,7 +99,7 @@ public class ActSix{
       
       //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
       File.WriteAllText(path + "\\results\\act6\\consolidatedFile.html", dataTable.ToMinimalString());
-      File.WriteAllText(path + "\\results\\act6\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act6\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 6 completada exitosamente, Noice");
    }
 }

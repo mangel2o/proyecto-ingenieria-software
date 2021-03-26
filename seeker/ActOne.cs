@@ -38,8 +38,8 @@ public class ActOne{
       watch.Stop();
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      File.WriteAllText(path + "\\results\\act6\\results.txt", table.ToMinimalString());
-      File.WriteAllText(path + "\\results\\act1\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act1\\results.txt", table.ToMinimalString());
+      File.AppendAllText(path + "\\results\\act1\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 1 completada exitosamente, Noice\n");
    }
 

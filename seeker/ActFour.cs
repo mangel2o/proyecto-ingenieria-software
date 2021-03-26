@@ -63,7 +63,7 @@ public class ActFour{
       
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
       File.WriteAllText(path + "\\results\\act4\\results.txt", table.ToMinimalString());
-      File.WriteAllText(path + "\\results\\act4\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.AppendAllText(path + "\\results\\act4\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 4 completada exitosamente, Noice\n");         
    }
 }
