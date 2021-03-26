@@ -21,7 +21,6 @@ public class ActThree{
 
       //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
       Directory.CreateDirectory(path + "\\results\\act3");
-      createFile(path + "\\results\\act3\\results.txt");
 
       //CREA UN DIRECTORIO PARA LOS NUEVOS ARCHIVOS HTML
       Directory.CreateDirectory(path + "\\results\\act3\\files");
@@ -44,8 +43,8 @@ public class ActThree{
       watch.Stop();
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      writeOnFile(path, table.ToMinimalString());
-      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act3\\results.txt", table.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act3\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 3 completada exitosamente, Noice\n");         
    }
 
@@ -60,7 +59,7 @@ public class ActThree{
       
       //CARACTERES ESPECIALES, PON AQUI UN CARACTER SEPARADOR DE TEXTO
       char[] specialChars = new char[] {
-         ' ', ',', '.',
+         ' ',
          '\n', '\r'
       };
 
@@ -80,6 +79,7 @@ public class ActThree{
       
       //BORRA TODOS LOS ESPACIOS RESIDUALES
       words = words.Where(word => !string.IsNullOrWhiteSpace(word)).ToArray();
+      words = words.Where(word => !(word.Length > 100)).ToArray();
       words = words.Select(s => s.ToLowerInvariant()).ToArray();
 
       //ORDENA EL ARRAY
@@ -91,23 +91,6 @@ public class ActThree{
       //TERMINA EL CRONOMETRO
       watch.Stop();
       return watch.Elapsed.ToString();
-   }
-
-   //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT
-   public void writeOnFile(string path, string value){
-      FileStream fs = new FileStream(path + "\\results\\act3\\results.txt", FileMode.Append);
-      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-      fs.Write(bdata, 0, bdata.Length);
-      fs.Close();
-   }
-
-   //CREA UN NUEVO ARCHIVO TXT
-   public static void createFile(string path){
-      if (File.Exists(path)){
-         File.Delete(path);
-      }
-      FileStream fs = File.Create(path);
-      fs.Close();
    }
 }
 

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using ConsoleTables;
 
 public class ActFive{
    //EJECUTA EL PROGRAMA
@@ -19,13 +20,15 @@ public class ActFive{
 
       //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
       Directory.CreateDirectory(path + "\\results\\act5");
-      createFile(path + "\\results\\act5\\results.txt");
+
+      //TABLA PARA GUARDAR LOS DATOS DE MANERA ORDENADA
+      var dataTable = new ConsoleTable("Palabra", "Frecuencia");
 
       //CREA UN ARRAYLIST PARA GUARDAR LAS PALABRAS
-      ArrayList wordsAndFreq = new ArrayList();
+      ArrayList wordsFreq = new ArrayList();
 
       //NAVEGA POR CADA ARCHIVO HTML DEL DIRECTORIO
-      string[] documentWords = File.ReadAllLines(filePath);
+      string[] words = File.ReadAllLines(filePath);
 
       //DICCIONARIO PARA GUARDAR LAS PALABRAS Y CONTEO DE DUPLICADOS
       Dictionary<string, int> dict = new Dictionary<string, int>();
@@ -34,54 +37,35 @@ public class ActFive{
       using (var progress = new ProgressBar()) {
          progress.setTask("Consolidando palabras");
          int count = 0;
-         foreach(string word in documentWords){
-            count++;
+         foreach(string word in words){
             if (!dict.ContainsKey(word)){
                dict.Add(word, 0);
-
             }
             dict[word]++;
-            progress.Report((double) count / documentWords.Length);
+
+            //PROGRESO
+            count++;
+            progress.Report((double) count / words.Length);
          }
 
-         //NAVEGA POR CADA ARCHIVO HTML DEL DIRECTORIO
+         //AGREGA LOS DATOS A LA TABLA
          foreach(KeyValuePair<string, int> word in dict) { 
-            wordsAndFreq.Add(word.Key + ", " + word.Value);
+            dataTable.AddRow(word.Key, word.Value);
          } 
 
+         //IMPRIME EL ULTIMO LOG DE PROGRESO
          Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop - 1);
          Console.WriteLine("\n[##########]  100%  | Identificando duplicados");
       }
-
-      //CONVIERTE EL ARRAYLIST EN UN ARRAY DE STRINGS
-      string[] finalWords = wordsAndFreq.ToArray(typeof(string)) as string[];
-
-      //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
-      File.WriteAllLines(path + "\\results\\act5\\consolidatedFile.html", finalWords);
 
       //TERMINA EL CRONOMETRO
       watch.Stop();
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act5\\consolidatedFile.html", dataTable.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act5\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 5 completada exitosamente, Noice\n"); 
    }
 
-   //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT, MANEJA LOS TIEMPOS
-   public void writeOnFile(string path, string value){
-      FileStream fs = new FileStream(path + "\\results\\act5\\results.txt", FileMode.Append);
-      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-      fs.Write(bdata, 0, bdata.Length);
-      fs.Close();
-   }
-
-   //CREA UN NUEVO ARCHIVO TXT
-   public static void createFile(string path){
-      if (File.Exists(path)){
-         File.Delete(path);
-      }
-      FileStream fs = File.Create(path);
-      fs.Close();
-   }
 }
 

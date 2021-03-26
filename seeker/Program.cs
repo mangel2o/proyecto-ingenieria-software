@@ -8,7 +8,6 @@ namespace seeker{
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
          path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
          
-         
          ActOne act1 = new ActOne();
          act1.executeProgram(path);
 
@@ -26,7 +25,7 @@ namespace seeker{
          
          ActSix act6 = new ActSix();
          act6.executeProgram(path);
-         
+                
       }
    }
 }

@@ -18,7 +18,6 @@ public class ActOne{
          
       //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
       Directory.CreateDirectory(path + "\\results\\act1");
-      createFile(path + "\\results\\act1\\results.txt");
 
       //NAVEGA POR CADA ARCHIVO HTML DEL DIRECTORIO
       using (var progress = new ProgressBar()) {
@@ -39,8 +38,8 @@ public class ActOne{
       watch.Stop();
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      writeOnFile(path, table.ToMinimalString());
-      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act6\\results.txt", table.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act1\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 1 completada exitosamente, Noice\n");
    }
 
@@ -54,23 +53,6 @@ public class ActOne{
       //TERMINA EL CRONOMETRO
       watch.Stop();
       return watch.Elapsed.ToString();
-   }
-
-   //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT
-   public void writeOnFile(string path, string value){
-      FileStream fs = new FileStream(path + "\\results\\act1\\results.txt", FileMode.Append);
-      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-      fs.Write(bdata, 0, bdata.Length);
-      fs.Close();
-   }
-
-   //CREA UN NUEVO ARCHIVO TXT
-   public static void createFile(string path){
-      if (File.Exists(path)){
-         File.Delete(path);
-      }
-      FileStream fs = File.Create(path);
-      fs.Close();
    }
 }
 

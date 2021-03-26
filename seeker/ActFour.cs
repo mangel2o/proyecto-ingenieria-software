@@ -22,7 +22,6 @@ public class ActFour{
 
       //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
       Directory.CreateDirectory(path + "\\results\\act4");
-      createFile(path + "\\results\\act4\\results.txt");
 
       //CREA UN ARRAYLIST PARA GUARDAR LAS PALABRAS
       ArrayList words = new ArrayList();
@@ -61,28 +60,11 @@ public class ActFour{
 
       //TERMINA EL CRONOMETRO
       watch.Stop();
-
+      
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      writeOnFile(path, table.ToMinimalString());
-      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act4\\results.txt", table.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act4\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 4 completada exitosamente, Noice\n");         
-   }
-
-   //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT, MANEJA LOS TIEMPOS
-   public void writeOnFile(string path, string value){
-      FileStream fs = new FileStream(path + "\\results\\act4\\results.txt", FileMode.Append);
-      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-      fs.Write(bdata, 0, bdata.Length);
-      fs.Close();
-   }
-
-   //CREA UN NUEVO ARCHIVO TXT
-   public static void createFile(string path){
-      if (File.Exists(path)){
-         File.Delete(path);
-      }
-      FileStream fs = File.Create(path);
-      fs.Close();
    }
 }
 

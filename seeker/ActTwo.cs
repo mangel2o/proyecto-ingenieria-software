@@ -20,7 +20,6 @@ public class ActTwo{
          
       //SE CREA UN ARCHIVO TXT DE SALIDA DE DATOS
       Directory.CreateDirectory(path + "\\results\\act2");
-      createFile(path + "\\results\\act2\\results.txt");
          
       //CREA UN DIRECTORIO PARA LOS NUEVOS ARCHIVOS HTML
       Directory.CreateDirectory(path + "\\results\\act2\\files");
@@ -43,8 +42,8 @@ public class ActTwo{
       watch.Stop();
 
       //GUARDA EL TIEMPO TOTAL Y LO ESCRIBE EN UN TXT
-      writeOnFile(path, table.ToMinimalString());
-      writeOnFile(path, "Tiempo total en ejecutar el programa: " + watch.Elapsed);
+      File.WriteAllText(path + "\\results\\act2\\results.txt", table.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act2\\results.txt", "Tiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 2 completada exitosamente, Noice\n");         
    }
 
@@ -53,10 +52,10 @@ public class ActTwo{
       Stopwatch watch = Stopwatch.StartNew();
       
       //lEE EL ARCHIVO
-      string changeText = File.ReadAllText(filePath);
+      string text = File.ReadAllText(filePath);
 
       //REEMPLAZA TODOS LOS TAGS HTML CON UN STRING VACIO
-      changeText = Regex.Replace(changeText, @"<(.|\n)+?>", string.Empty);
+      string changeText = Regex.Replace(text, @"<(.|\n)+?>", string.Empty);
       
       //ESCRIBE UN NUEVO DOCUMENTO SIN TAGS DE HTML
       File.WriteAllText(path + "\\results\\act2\\files\\" + new DirectoryInfo(filePath).Name, changeText);
@@ -64,23 +63,6 @@ public class ActTwo{
       //TERMINA EL CRONOMETRO
       watch.Stop();
       return watch.Elapsed.ToString();
-   }
-
-      //METODO PARA ESCRIBIR INFORMACION EN UN ARCHIVO TXT
-   public void writeOnFile(string path, string value){
-      FileStream fs = new FileStream(path + "\\results\\act2\\results.txt", FileMode.Append);
-      byte[] bdata = Encoding.Default.GetBytes(value + "\n");
-      fs.Write(bdata, 0, bdata.Length);
-      fs.Close();
-   }
-
-   //CREA UN NUEVO ARCHIVO TXT
-   public static void createFile(string path){
-      if (File.Exists(path)){
-         File.Delete(path);
-      }
-      FileStream fs = File.Create(path);
-      fs.Close();
    }
      
 }
