@@ -25,6 +25,9 @@ namespace seeker{
          
          ActSix act6 = new ActSix();
          act6.executeProgram(path);
+
+         ActSeven act7 = new ActSeven();
+         act7.executeProgram(path);
                 
       }
    }
