@@ -58,7 +58,9 @@ public class ActNine{
                
             }
             foreach(KeyValuePair<string, Word> word in freqDict) { 
-               wordsList.Add(word.Value);
+               if(word.Value.freq >= 3){
+                  wordsList.Add(word.Value);
+               }
             } 
 
             //PROGRESO

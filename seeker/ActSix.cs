@@ -41,7 +41,9 @@ public class ActSix{
                freqDict[word].freq++;
             }
             foreach(KeyValuePair<string, Word> word in freqDict) { 
-               wordsList.Add(word.Value);
+               if(word.Value.freq >= 3){
+                  wordsList.Add(word.Value);
+               }
             } 
 
             //PROGRESO

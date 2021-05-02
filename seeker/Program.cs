@@ -32,11 +32,24 @@ namespace seeker{
          ActEight act8 = new ActEight();
          act8.executeProgram(path);
          
+         /*
          ActNine act9 = new ActNine();
          act9.executeProgram(path);
 
          ActTen act10 = new ActTen();
          act10.executeProgram(path);
+         */
+
+         EviOne evi1 = new EviOne();
+         int[] cantDocs = {10, 20, 30, 40, 50, 100};
+
+         foreach(int cant in cantDocs){
+            //TOKENIZACIÓN
+            evi1.executeProgram(path, cant, true, false);
+
+            //INDEXACIÓN
+            evi1.executeProgram(path, cant, true, true);
+         }
       }
    }
 }
