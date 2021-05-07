@@ -8,6 +8,7 @@ namespace seeker{
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
          path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
          
+         
          ActOne act1 = new ActOne();
          act1.executeProgram(path);
 
@@ -39,7 +40,11 @@ namespace seeker{
          ActTen act10 = new ActTen();
          act10.executeProgram(path);
          */
+         
+         ActEleven act11 = new ActEleven();
+         act11.executeProgram(path);
 
+         /*
          EviOne evi1 = new EviOne();
          int[] cantDocs = {10, 20, 30, 40, 50, 100};
 
@@ -50,6 +55,9 @@ namespace seeker{
             //INDEXACIÓN
             evi1.executeProgram(path, cant, true, true);
          }
+         */
+
+
       }
    }
 }

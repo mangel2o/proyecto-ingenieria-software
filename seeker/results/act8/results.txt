@@ -1,2 +1,2 @@
 
-Tiempo total en ejecutar el programa: 00:00:00.9111770
+Tiempo total en ejecutar el programa: 00:00:01.0668616
