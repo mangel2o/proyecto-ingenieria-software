@@ -41,7 +41,7 @@ public class ActThirteen{
       List<Word> wordsList = new List<Word>();
 
       //GUARDA LAS PALABRAS EN UN DICCIONARIO JUNTO CON SUS FILEPATHS
-      Dictionary<string, List<string>> wordsSearched = new  Dictionary<string,  List<string>>();
+      Dictionary<string, Dictionary<string, int>> wordsSearched = new  Dictionary<string, Dictionary<string, int>>();
 
       //ENLISTA LA FRECUENCIA DE LAS PALABRAS POR ARCHIVO
       Dictionary<string, Word> freqDict;
@@ -107,8 +107,14 @@ public class ActThirteen{
                countDocs++;
                progress.Report((double) count / filePaths.Length);
             }
-
-            wordsSearched.Add(wordToFind, docSearch);
+            Dictionary<string, int> repeatedPaths = new Dictionary<string, int>();
+            foreach(string filepath in docSearch){
+               if (!repeatedPaths.ContainsKey(filepath)){
+                  repeatedPaths.Add(filepath, 1);
+               }
+               repeatedPaths[filepath]++;
+            }
+            wordsSearched.Add(wordToFind, repeatedPaths);
          }
          
          //IMPRIME EL ULTIMO LOG DE PROGRESO
@@ -164,14 +170,23 @@ public class ActThirteen{
       }
 
       
-      foreach(KeyValuePair<string, List<string>> word in wordsSearched){
-         var dataTableDocSearch = new ConsoleTable("ID", "Documento");
+      foreach(KeyValuePair<string, Dictionary<string, int>> word in wordsSearched){
+         var dataTableDocSearch = new ConsoleTable("TOP", "Documento", "Frecuencia");
+         var listKV = word.Value.ToList();
+         listKV.Sort((first, next) => { 
+            return next.Value.CompareTo(first.Value); 
+         });
+         if (listKV.Count > 10){
+            listKV.RemoveRange(10, listKV.Count - 10);
+         }
+
          int counter = 1;
-         foreach(string filepath in word.Value){
-            dataTableDocSearch.AddRow(counter, filepath);
+         foreach(KeyValuePair<string, int> filepath in listKV){
+            dataTableDocSearch.AddRow(/*relationDocs.FirstOrDefault(x => x.Value == filepath.Key).Key*/ counter, filepath.Key, filepath.Value);
             counter++;
          }
-         File.WriteAllText(path + "\\results\\act13\\documentsFor" + word.Key + ".html", dataTableDocSearch.ToMinimalString());
+         string title = "Palabra buscada: " + word.Key + "\n--------------------------\n";
+         File.WriteAllText(path + "\\results\\act13\\searchFor" + FirstCharToUpper(word.Key) + ".html", title + dataTableDocSearch.ToMinimalString());
       }
 
       //TERMINA EL CRONOMETRO
@@ -185,5 +200,14 @@ public class ActThirteen{
       File.WriteAllText(path + "\\results\\act13\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 13 completada exitosamente, Noice\n");
    }
+
+   public static string FirstCharToUpper(string s)  {  
+      // Check for empty string.  
+      if (string.IsNullOrEmpty(s))  {  
+         return string.Empty;  
+      }  
+      // Return char and concat substring.  
+      return char.ToUpper(s[0]) + s.Substring(1);  
+   }  
 }
 

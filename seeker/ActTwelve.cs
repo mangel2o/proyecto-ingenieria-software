@@ -163,13 +163,24 @@ public class ActTwelve{
       //TERMINA EL CRONOMETRO
       watch.Stop();
       
+      string title = "Palabra buscada: " + wordToFind + "\n-------------\n";
+
       //ESCRIBE TODAS LAS PALABRAS EN UN ARCHIVO CONSOLIDADO
       File.WriteAllText(path + "\\results\\act12\\posting.html", dataTablePostings.ToMinimalString());
       File.WriteAllText(path + "\\results\\act12\\file.html", dataTable.ToMinimalString());
       File.WriteAllText(path + "\\results\\act12\\relation.html", dataTableRelations.ToMinimalString());
-      File.WriteAllText(path + "\\results\\act12\\documentsSearchWord.html", dataTableDocSearch.ToMinimalString());
+      File.WriteAllText(path + "\\results\\act12\\searchFor"+ FirstCharToUpper(wordToFind) + ".html", title + dataTableDocSearch.ToMinimalString());
       File.WriteAllText(path + "\\results\\act12\\results.txt", "\nTiempo total en ejecutar el programa: " + watch.Elapsed);
       Console.WriteLine("Actividad 12 completada exitosamente, Noice\n");
    }
+
+   public static string FirstCharToUpper(string s)  {  
+      // Check for empty string.  
+      if (string.IsNullOrEmpty(s))  {  
+         return string.Empty;  
+      }  
+      // Return char and concat substring.  
+      return char.ToUpper(s[0]) + s.Substring(1);  
+   }  
 }
 

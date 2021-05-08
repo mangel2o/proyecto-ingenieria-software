@@ -9,7 +9,7 @@ namespace seeker{
          string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
          path += "\\GitHub\\proyecto-ingenieria-software\\seeker";
          
-         
+         /*
          ActOne act1 = new ActOne();
          act1.executeProgram(path);
 
@@ -42,21 +42,20 @@ namespace seeker{
          act10.executeProgram(path);
          */
          
-      /*
          ActEleven act11 = new ActEleven();
          act11.executeProgram(path);
-         */
-         /*
+         
          ActTwelve act12 = new ActTwelve();
          act12.executeProgram(path, "library", false);
-         */
-
+         
          string[] wordsToFind = new string[]{
             "library", "israel", "views"
          };
 
          ActThirteen act13 = new ActThirteen();
          act13.executeProgram(path, wordsToFind, false);
+
+
          /*
          EviOne evi1 = new EviOne();
          int[] cantDocs = {10, 20, 30, 40, 50, 100};
